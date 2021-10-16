@@ -169,10 +169,32 @@ def one_away(str_1, str_2):
     return True
 
 
+"""
+1.6 String Compression
+Implement a method to perform basic string compression using the counts of repeated characters. If the compressed string would not become smaller than the original
+return the original string
+
+-> aabcccccaaa -> a2b1c5a3
+"""
+
+def string_compression(string):
+    count = 0
+    result = ""
+    for i in range(len(string)):
+        count += 1
+        # the first half of the if statement handles the case when we reach the end of the string
+        # the "i + 1 >= len(string)" needs to come first in this case because if we have
+        # if string[i] != string[i + 1] or i + 1 >= len(string): -> this errors out due to index out of range error
+        if i + 1 >= len(string) or string[i] != string[i + 1]:
+            print(f"adding {string[i]} and count {count}")
+            result += string[i] + str(count)
+            count = 0
+    if len(result) < len(string):
+        return result
+    return string
 
 
-if __name__ == "__main__":
-    print(one_away("pale","ple"))
-    print(one_away("pale","pales"))
-    print(one_away("pale","bake"))
-    print(one_away("pales","palessss"))
+
+
+if __name__ == "__main__":  
+    pass

@@ -76,3 +76,16 @@ def test_one_away3():
 def test_one_away4():
     print("Testing for One Away, pale and palessss - should return False")
     assert arr.one_away("pale","palessss") == False
+
+"""
+Testing for Array Question 1.6
+"""
+
+def test_string_compression1():
+    print("Testing for String Compression, aabcccccaaa should return a2b1c5a3")
+    assert arr.string_compression("aabcccccaaa") == "a2b1c5a3"
+
+def test_string_compression2():
+    print("Testing for string compression, abc -> abc")
+    assert arr.string_compression("abc") == "abc"
+
