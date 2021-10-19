@@ -1,5 +1,5 @@
 """
-Working through Chapter 1 - Arrays and Strings
+Working through Chapter 1 - Arrays and Strings in CTCI
 """
 
 """
@@ -193,8 +193,3 @@ def string_compression(string):
         return result
     return string
 
-
-
-
-if __name__ == "__main__":  
-    pass
