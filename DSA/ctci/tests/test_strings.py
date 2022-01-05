@@ -1,3 +1,6 @@
+# run these tests with the command pytest DSA/ctci/tests/test_strings.py 
+# this is assuming your in the root dir
+
 from DSA.ctci import strings
 
 def test_is_unique_set_true():
@@ -29,16 +32,5 @@ def test_is_permutation_dictionary_false():
 def test_is_permutation_length():
     assert strings.is_permutation_dictionaries("ABC", "DEFFF") == False
 
-
-
-if __name__ == "__main__":
-    test_is_unique_set_true()
-    test_is_unique_set_true()
-    test_is_unique_true()
-    test_is_unique_false()
-    test_is_permutation_true()
-    test_is_permutation_false()
-    test_is_permutation_dictionary_true()
-    test_is_permutation_dictionary_false()
-    test_is_permutation_length()
-    print("All tests have passed")
+def test_urlify():
+    assert strings.urlify("Mr John Smith    ") == "Mr%20John%20Smith"

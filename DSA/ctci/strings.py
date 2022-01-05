@@ -97,3 +97,36 @@ def is_permutation_dictionaries(x,y):
     if x_dict != y_dict:
         return False
     return True
+
+
+"""
+3. URLify
+Write a method to replace all spaces in a string with '%20'. You may assume that the
+string has sufficient space at the end to hold the additional characters. You're also given
+the true length of the string
+
+Input - "Mr John Smith    ", 13
+Output - "Mr%20%John%20Smith"
+
+Solution -
+    Part of the initial issue is that we don't know when the string is suppose to end
+    We can't loop through the entire string and replace the spaces with "%20" because when we reach the end
+    we'll end up with multiple "%20%20%20"
+
+    What if we split the string on spaces, and then for each item in the array add "%20" in between
+    the items
+        So essentially we would have:
+            -> ["Mr", "John", "Smith"]
+            -> new_str = "Mr%20John%20Smith"
+"""
+
+def urlify(x):
+    my_list = x.split()
+    result = ""
+    for word in range(len(my_list)):
+        # checking if last word
+        if my_list[word] == my_list[-1]:
+            result += my_list[word]
+        else:
+            result += my_list[word] + "%20"
+    return result
