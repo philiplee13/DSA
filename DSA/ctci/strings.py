@@ -130,3 +130,83 @@ def urlify(x):
         else:
             result += my_list[word] + "%20"
     return result
+
+"""
+4. Palindrome Permutation
+Given a string, write a function to check if it is a permutation of a palindrome.
+A palindrome is a word or phrase that is the same forwards and backwards.
+A permutation is a rearrangement of letters. The palindrome does not need to be limited to just
+dictionary words.
+You can ignore casing and non-letter characters.
+
+Input - "Tact Coa"
+Output - True
+    permuatations - "Taco cat", "atco cta", etc.
+
+Solution - 
+    The key for this problem is to determine whether or not the string is a palindrome
+    The permutation is just a rearrangement of the letters, so all we need to do is make sure
+    that we keep the original letters.
+
+
+    My Original Solution (Not sure if this is correct)
+    For a palindrome - we might be able to use two pointers, one at the start of the string
+    and the other at the end.
+        We can then iterate through the string and move towards the center
+        checking if the pointers are equal to each other. If they are, move onto the next letters
+        If they aren't - this isn't a palindrome
+
+        Example - "taco cat":
+            the first letter and last letter is t - this passes
+            the second letter and second to last letter is a -  this passes
+            next letter is both c - this passes
+            the next letter is a "o" and a "space" - so we need to handle this edge case
+                can we check if it's a space - either inc / dec the letter that you're on?
+            so in this case - we have "o" and a "space" - we would dec the 2nd pointer to then point to
+            the next letter, in this case "o"
+
+    CTCI Solution
+        Their solution is more elegant - the logic here is to think about what we need
+        to be able to write a string the same way backwards and forwards.
+        We need the same set of letters - on both sides (imagine we cut the string in half)
+        Only the middle character can be odd
+        So we can use a dictionary here, and make sure that only one letter has a count greater than 1
+"""
+def palindrome_permutation(x):
+    first = 0
+    last = len(x) - 1
+    print(last)
+    while first < last:
+        print(f"first index and last index is {first} and {last}")
+        print(f"first and last letters are {x[first]} and {x[last]}")
+        if x[first] == " ":
+            print(f"first letter was a space {x[first]}")
+            first += 1
+        elif x[last] == " ":
+            print(f"last letter was a space {x[last]}")
+            last -= 1
+        if x[first] != x[last]:
+            return False
+        print(f"first and last letter matches {x[first]} and {x[last]}")
+        first += 1
+        last -= 1
+    return True
+
+def palindrome_permutation_ctci(x):
+    d = {}
+    count = 0
+    for i in range(len(x)):
+        # if space - do nothing
+        if x[i] == " ":
+            continue
+        if x[i] not in d:
+            d[x[i]] = 1
+        else:
+            d[x[i]] += 1
+    for k, v in d.items():
+        print(f"k is {k} v is {v}")
+        if v == 1:
+            count += 1
+    if count > 1:
+        return False
+    return True
