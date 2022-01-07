@@ -77,3 +77,20 @@ def test_palindrome_permutation_ctci_true_second_test():
 
 def test_palindrome_permutation_ctci_false_second_test():
     assert strings.palindrome_permutation("livci") == False
+
+"""
+5. One Away
+"""
+
+def test_one_away_true():
+    assert strings.one_away("pale", "ple") == True
+
+def test_one_away_false():
+    assert strings.one_away("pale", "bake") == False
+
+def test_one_away_second_true():
+    assert strings.one_away("pales", "pale") == True
+
+def test_one_away_second_false():
+    assert strings.one_away("pales", "ple") == False
+

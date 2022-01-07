@@ -210,3 +210,55 @@ def palindrome_permutation_ctci(x):
     if count > 1:
         return False
     return True
+
+
+
+"""
+5. One Away
+There are three types of edits that can be performed on strings:
+    Insert a character
+    Remove a character
+    Replace a character
+Given two strings, write a function to check if they are one edit (or zero edits) away
+
+Input - pale, ple
+Output - True (remove the a)
+
+Input - pale, bake
+Output - False (replace p with b and l with k)
+
+Solution
+    The first check we can do is if the two strings are equal to each other
+        return true
+    Then we can try to find the difference in length from both strings
+        If it's positive - we know we're adding a character in one of the strings
+            If the "count" here is more than 1
+                return false - we can only have one change
+        If it's negative - we know we're subtracing a character from the strings
+            If the "count" here is more than 1
+                return false - we can only have one change
+        If it's 0 - it's possible that we replaced a character
+            loop through the strings and compare each letter - when one is different add it to a "count"
+            At the end of the loop - if the count is larger than 1
+                return false
+"""
+def one_away(x, y):
+    count = 0
+    if x == y:
+        return True
+    if len(x) > len(y):
+        count = len(x) - len(y)
+        if count > 1:
+            return False
+    elif len(x) == len(y):
+        for i in range(len(x)):
+            if x[i] != y[i]:
+                count += 1
+        if count > 1:
+            return False
+    return True
+
+
+
+
+
