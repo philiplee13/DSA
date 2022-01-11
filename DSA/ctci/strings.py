@@ -259,6 +259,42 @@ def one_away(x, y):
     return True
 
 
+"""
+6. String Compression
+Impelment a method to perform basic string compression using the counts of repeated characters.
+For example, the string "aabcccccaaa" would become a2b1c5a3
 
+Input - aabcccccaaa
+Output - a2b1c5a3
 
+Solution
+    What if we have a while loop that goes until we hit the end of the string
+        Then we can count how many occurences of the same letter that we have
+        When we reach a point where the letters differ, add the count to the result string
+        And move the pointer onto the next letter
+"""
 
+def string_compression(x):
+    i = 0
+    count = 1
+    result = ""
+    while i < len(x):
+        print(f"length of string is {len(x)}")
+        print(f"i is at {i}")
+        print(f"Result is {result}")
+        # when we reach the end of the string - add to result string
+        if (i + 1) == len(x):
+            result += x[i] + str(count)
+            i += 1
+        # if the current letter and the one next to it don't match - add to result string
+        elif x[i] != x[i + 1]:
+            result += x[i] + str(count)
+            i += 1
+            count = 1
+            print(f"Just added to result - {result}")
+        # otherwise, inc the count and index
+        else:
+            count += 1
+            i += 1
+            print(f"Increasing the count to {count}")
+    return result

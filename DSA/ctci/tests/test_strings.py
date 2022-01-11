@@ -94,3 +94,12 @@ def test_one_away_second_true():
 def test_one_away_second_false():
     assert strings.one_away("pales", "ple") == False
 
+
+"""
+6. String Compression
+"""
+def test_string_compression_true():
+    assert strings.string_compression("aabcccccaaa") == "a2b1c5a3"
+
+def test_strings_compression_true_second_test():
+    assert strings.string_compression("abbbbddde") == "a1b4d3e1"
