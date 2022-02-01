@@ -27,5 +27,30 @@ def remove_dups(linked_list):
 
 
 """
-2. 
+2. Return kth to last
+Implement an algorithm to find the Kth to the last element of a singly linked list
+
+We're assuming that we're going to recieve a parameter that is not bigger than the
+singly linked list. We also assume that we don't know the length of the linked list
+
+Input - 3 -> 2 -> 2 -> 1 -> 4 -> 5, find the "5th" to the last element of the linked list
+Output - 2
+
+If we were told to find the "2nd" to the last element - the output here would be 4
+
+For this solution - we'll use two pointers here.
+    One pointer will start off being "k" nodes ahead of the second pointer
+    The second pointer will start at the head node
+    We will iterate until our first pointer (the one that starts at k) reaches the end
+    At that point - we return our second pointer - which will be "k" nodes from the end
 """
+
+def return_kth_node(linked_list, kth_node):
+    first = kth_node
+    head = linked_list.nodeat(first)
+    trailer = linked_list.nodeat(0)
+    while head != None:
+        head = head.next
+        trailer = trailer.next
+    return trailer.value
+
