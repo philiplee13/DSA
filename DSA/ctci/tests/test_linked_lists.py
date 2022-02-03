@@ -28,3 +28,21 @@ def test_return_kth_node_second():
     lst = sllist([3,2,2,1,4,5])
     expected_result = 4
     assert linked_lists.return_kth_node(lst,2) == expected_result
+
+"""
+3. Delete Middle Node
+"""
+
+def test_delete_middle_node():
+    lst = sllist(["a","b","c","d","e","f"])
+    expected_result = sllist(["a","b","c","e","f"])
+    assert linked_lists.delete_middle_node(lst) == expected_result
+
+def test_delete_middle_node_second():
+    lst = sllist([1,2,5,3,2,4,1,2])
+    expected_result = sllist([1,2,5,3,4,1,2])
+    assert linked_lists.delete_middle_node(lst) == expected_result
+
+"""
+4.
+"""

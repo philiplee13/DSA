@@ -49,8 +49,48 @@ def return_kth_node(linked_list, kth_node):
     first = kth_node
     head = linked_list.nodeat(first)
     trailer = linked_list.nodeat(0)
-    while head != None:
+    while head is not None:
         head = head.next
         trailer = trailer.next
     return trailer.value
 
+
+
+"""
+3. Delete Middle Node
+Implement an algorithm to delete the middle node (ie. any node between the first and last node)
+of a singly linked list.
+
+Input - a -> b -> c -> d -> e -> f
+Output - a -> b -> d -> e -> f
+
+Let's break this up into two parts
+    1. Find a middle node - 
+        For this, one way is to traverse the entire linked list and keep count of the length
+            Once we hit the end, we traverse the list again until we reach length / 2
+        But this is fairly slow - another way to do this is to use two pointers
+            One increments by one, and the other increments by two
+            By the time our "fast" pointer reaches the end, the "slow" pointer will reach
+            the middle of the linked list
+        -> A question here is why "two" though? Why not another number?
+
+    2. Once we find the middle node - point the previous node's pointer to the middle node's next
+"""
+def delete_middle_node(linked_list):
+    fast = linked_list.nodeat(0)
+    slow = linked_list.nodeat(0)
+    prev = None
+    while fast is not None and fast.next is not None:
+        fast = fast.next.next
+        prev = slow
+        slow = slow.next
+    # delete the middle node - in the llist class "next" is a read only attribute
+    # so here we use "remove" instead
+    # prev.next = slow.next
+    linked_list.remove(slow)
+    return linked_list
+    
+    
+"""
+4.
+"""
