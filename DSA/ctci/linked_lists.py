@@ -92,5 +92,45 @@ def delete_middle_node(linked_list):
     
     
 """
-4.
+4. Partition
+Write code to partition a linked list around a value x
+All nodes less than x come before all nodes greater than or equal to x
+- The partition element can appear anywhere in the "right partition"
+It does not need to appear between the left and right partitions
+
+Input - 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1, partition = 5
+Output - 3 -> 2 -> 1 -> 5 -> 5 -> 8 -> 10
+
+One way to go about this is to hold 3 different linked list and merge them at the end
+    One for the elements less than the partitions
+    One for the elements that are equal to the partition (if any)
+    One for the elements that are greater than the partition
+Then once we finish looping through the original linked list - merge them together
+"""
+def partition_linked_list(linked_list, partition):
+    first = sllist()
+    middle = sllist()
+    last = sllist()
+    result = sllist()
+    head = linked_list.nodeat(0)
+    # while the head node is not null - iterate through original linked list
+    while head is not None:
+        # determine if that node should be going in first, middle, or last
+        if head.value < partition:
+            first.append(head.value)
+            head = head.next
+        elif head.value > partition:
+            last.append(head.value)
+            head = head.next
+        else:
+            middle.append(head.value)
+            head = head.next
+    # after the loop is done - add all the linked lists together
+    result += first
+    result += middle
+    result += last
+    return result
+
+"""
+5. 
 """

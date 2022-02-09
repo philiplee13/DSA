@@ -44,5 +44,20 @@ def test_delete_middle_node_second():
     assert linked_lists.delete_middle_node(lst) == expected_result
 
 """
-4.
+4. Partition Linked List
+"""
+
+def test_partition_linked_list():
+    lst = sllist([3,5,8,5,10,2,1])
+    expected_result = sllist([3,2,1,5,5,8,10])
+    assert linked_lists.partition_linked_list(lst, 5) == expected_result
+
+def test_partition_linked_list_second():
+    lst = sllist([9,4,1,7,2,10,12,3])
+    expected_result = sllist([4,1,2,3,9,7,10,12])
+    assert linked_lists.partition_linked_list(lst, 5) == expected_result
+
+
+"""
+5. 
 """
