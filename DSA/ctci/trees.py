@@ -35,7 +35,7 @@ class BST:
     Prints out the root node
     """
     def print_root(self):
-        print(f"The root node is {self.root.data}")
+        return f"The root node is {self.root.data}"
     
     """
     Prints out the entire tree
@@ -46,6 +46,7 @@ class BST:
         if not isinstance(root, Node):
             raise TypeError
         stack = []
+        result = ""
         curr = root
         while curr is not None or len(stack) != 0:
             if curr is not None:
@@ -53,12 +54,13 @@ class BST:
                 curr = curr.left
             else:
                 curr = stack.pop()
-                print(f"{curr.data} ")
+                result += f"{curr.data} "
                 curr = curr.right
+        return result
 
     """
     Iterative Approach
-    
+
     Insertion of a node into an already existing tree
     This function will look at the node passed in and determine which side of
         the tree it should be in.
@@ -88,7 +90,7 @@ class BST:
             parent.right = node
         else:
             parent.left = node
-        print(f"Inserted the node {node.data}")
+        return f"Inserted the node {node.data}"
 
     
 
@@ -98,7 +100,7 @@ if __name__ == "__main__":
     node3 = Node(6)
     node4 = Node(8)
     tree = BST(node1)
-    tree.insert(node2)
-    tree.insert(node3)
-    tree.print_root()
-    tree.in_order_traversal(tree.root)
+    print(tree.insert(node2))
+    print(tree.insert(node3))
+    print(tree.print_root())
+    print(tree.in_order_traversal(tree.root))
