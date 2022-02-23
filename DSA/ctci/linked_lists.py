@@ -130,7 +130,3 @@ def partition_linked_list(linked_list, partition):
     result += middle
     result += last
     return result
-
-"""
-5. 
-"""

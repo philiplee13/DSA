@@ -56,8 +56,3 @@ def test_partition_linked_list_second():
     lst = sllist([9,4,1,7,2,10,12,3])
     expected_result = sllist([4,1,2,3,9,7,10,12])
     assert linked_lists.partition_linked_list(lst, 5) == expected_result
-
-
-"""
-5. 
-"""
