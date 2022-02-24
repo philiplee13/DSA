@@ -2,6 +2,11 @@
 BST Implementation
 """
 
+from typing import Type
+
+from numpy import insert
+
+
 class Node:
     def __init__(self, data: int):
         if not isinstance(data, int):
@@ -39,7 +44,7 @@ class BST:
     
     """
     Prints out the entire tree
-    This prints out the tree IN ORDER - Iterative approach
+    This prints out the tee IN ORDER - Iterative approach
         In order is Left - Node - Right
     """
     def in_order_traversal(self, root: Node):
@@ -57,6 +62,18 @@ class BST:
                 result += f"{curr.data} "
                 curr = curr.right
         return result
+
+    """
+    Recursive method for in order traversal
+        Left - Node - Right
+    """
+    def in_order_recursive(self, root: Node):
+        if root is None:
+            return
+        self.in_order_recursive(root.left)
+        print(f"{root.data} ")
+        self.in_order_recursive(root.right)
+        
 
     """
     Iterative Approach
@@ -92,6 +109,19 @@ class BST:
             parent.left = node
         return f"Inserted the node {node.data}"
 
+    """
+    Recursive Implementation of Inserting a node
+    """
+    def insert_recursive(self, root: Node, node: Node):
+        if root is None:
+            return node
+        if root is not None:
+            if node.data < root.data:
+                root.left = self.insert_recursive(root.left, node)
+            else:
+                root.right = self.insert_recursive(root.right, node)
+            return root
+
     
 
 if __name__ == "__main__":
@@ -99,8 +129,13 @@ if __name__ == "__main__":
     node2 = Node(4)
     node3 = Node(6)
     node4 = Node(8)
-    tree = BST(node1)
-    print(tree.insert(node2))
-    print(tree.insert(node3))
-    print(tree.print_root())
-    print(tree.in_order_traversal(tree.root))
+    iterative_tree = BST(node1)
+    print(iterative_tree.insert(node2))
+    print(iterative_tree.insert(node3))
+    print(iterative_tree.print_root())
+    print(f"Iterative Traversal - {iterative_tree.in_order_traversal(iterative_tree.root)}")
+    print("RECURSIVE METHODS")
+    recursive_tree = BST(node2)
+    recursive_tree.insert_recursive(recursive_tree.root, node4)
+    recursive_tree.insert_recursive(recursive_tree.root, node3)
+    recursive_tree.in_order_recursive(recursive_tree.root)
