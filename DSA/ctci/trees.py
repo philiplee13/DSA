@@ -2,11 +2,6 @@
 BST Implementation
 """
 
-from typing import Type
-
-from numpy import insert
-
-
 class Node:
     def __init__(self, data: int):
         if not isinstance(data, int):
@@ -41,6 +36,11 @@ class BST:
     """
     def print_root(self):
         return f"The root node is {self.root.data}"
+
+
+    """
+    ITERATIVE METHODS
+    """
     
     """
     Prints out the entire tree
@@ -62,18 +62,6 @@ class BST:
                 result += f"{curr.data} "
                 curr = curr.right
         return result
-
-    """
-    Recursive method for in order traversal
-        Left - Node - Right
-    """
-    def in_order_recursive(self, root: Node):
-        if root is None:
-            return
-        self.in_order_recursive(root.left)
-        print(f"{root.data} ")
-        self.in_order_recursive(root.right)
-        
 
     """
     Iterative Approach
@@ -110,32 +98,44 @@ class BST:
         return f"Inserted the node {node.data}"
 
     """
+    Iterative Approach
+
+    Check if a given node is in the tree
+    Return True if it exists
+    Return False if it doesn't
+    """
+    def is_in_tree(self, node: Node):
+        if not isinstance(node, Node):
+            raise TypeError
+        curr = self.root
+        while curr is not None:
+            if curr.data == node.data:
+                return True
+            if curr.data > node.data:
+                curr = curr.left
+            else:
+                curr = curr.right
+        return False
+
+    """
+    RECURSIVE METHODS
+    """
+
+    """
+    Recursive method for in order traversal
+        Left - Node - Right
+    """
+    def in_order_recursive(self, root: Node):
+        pass
+        
+    """
     Recursive Implementation of Inserting a node
     """
     def insert_recursive(self, root: Node, node: Node):
-        if root is None:
-            return node
-        if root is not None:
-            if node.data < root.data:
-                root.left = self.insert_recursive(root.left, node)
-            else:
-                root.right = self.insert_recursive(root.right, node)
-            return root
+        pass
 
-    
-
-if __name__ == "__main__":
-    node1 = Node(5)
-    node2 = Node(4)
-    node3 = Node(6)
-    node4 = Node(8)
-    iterative_tree = BST(node1)
-    print(iterative_tree.insert(node2))
-    print(iterative_tree.insert(node3))
-    print(iterative_tree.print_root())
-    print(f"Iterative Traversal - {iterative_tree.in_order_traversal(iterative_tree.root)}")
-    print("RECURSIVE METHODS")
-    recursive_tree = BST(node2)
-    recursive_tree.insert_recursive(recursive_tree.root, node4)
-    recursive_tree.insert_recursive(recursive_tree.root, node3)
-    recursive_tree.in_order_recursive(recursive_tree.root)
+    """
+    Recursive Approach for checking node is in tree
+    """
+    def is_in_tree(self, node: Node):
+        pass
