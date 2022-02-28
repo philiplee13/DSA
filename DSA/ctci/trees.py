@@ -118,6 +118,27 @@ class BST:
         return False
 
     """
+    Get the height of a tree
+        We need to find the max height between the left and right subtrees
+        We need to get both the left and right here because they might differ
+
+    Once we get both of their heights - we can find the max between the two
+    """
+    def get_height(self):
+        curr = self.root
+        left = 0
+        right = 0
+        while curr is not None:
+            left += 1
+            curr = curr.left
+        curr = self.root
+        while curr is not None:
+            right += 1
+            curr = curr.right
+        return max(left, right)
+
+
+    """
     RECURSIVE METHODS
     """
 
