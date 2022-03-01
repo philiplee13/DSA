@@ -137,6 +137,33 @@ class BST:
             curr = curr.right
         return max(left, right)
 
+    """
+    Get the minimum value of the BST
+        The minimum value will be the left most node without a child
+        So we need to traverse the left subtree until we hit a None - then return the node before that
+    """
+    def get_min(self):
+        curr = self.root
+        if curr is None:
+            return -1
+        while curr.left is not None:
+            curr = curr.left
+        return curr.data
+
+
+    """
+    Get the max value of the BST
+        The max value will the be the right most node - without a child
+        So we need to traverse the right subtree until we hit a None - then return the node before that
+    """
+    def get_max(self):
+        curr = self.root
+        if curr is None:
+            return -1
+        while curr.right is not None:
+            curr = curr.right
+        return curr.data
+
 
     """
     RECURSIVE METHODS
