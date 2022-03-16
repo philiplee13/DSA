@@ -19,7 +19,7 @@ def test_add_node():
     tree.insert(node3)
     tree.insert(node4)
     expected_result = "4 5 6 8 "
-    result = tree.in_order_traversal(tree.root)
+    result = tree.in_order_iterative(tree.root)
     assert expected_result == result
 
 
@@ -38,7 +38,7 @@ def test_add_node2():
     tree.insert(node4)
     tree.insert(node2)
     expected_result = "4 5 6 8 "
-    result = tree.in_order_traversal(tree.root)
+    result = tree.in_order_iterative(tree.root)
     assert expected_result == result
 
 
@@ -164,3 +164,52 @@ def test_get_max_second_test():
     tree.insert(node15)
     expected_result = 15
     assert expected_result == tree.get_max()
+
+"""
+Test method for BFS
+"""
+
+"""
+Before the 1st iteration
+    seen = [A]
+    q = [A]
+    result = ""
+
+1st iteration of the while loop
+    seen = [A]
+    q = []
+    node = A
+    result = A
+        inside the for loop
+        seen = [A, B, C]
+        q = [B, C]
+2nd iteration of the while loop
+    seen = [A, B, C]
+    q = [B, C]
+    node = B
+    result = A B
+        inside the for loop
+        seen = [A, B, C, D, E]
+        q = [C, D, E]
+3rd iteration of the while loop
+    seen = [A, B, C, D, E]
+    q = [D, E]
+    node = C
+    result = A B C
+        inside the for loop
+        seen = [A, B, C, D, E, F]
+        q = [D, E, F]
+... pattern continues for BFS
+"""
+def test_bfs():
+    graph = {
+        "A" : ["B","C"],
+        "B" : ["D", "E"],
+        "C" : ["F"],
+        "D" : [],
+        "E" : ["F"],
+        "F" : []
+        }
+    expected_result = "A B C D E F "
+    result = trees_implementation.bfs(graph, "A")
+    assert expected_result == result

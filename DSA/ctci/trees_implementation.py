@@ -165,3 +165,41 @@ class BST:
             curr = curr.right
         return curr.data
     
+
+# bfs and dfs methods
+
+def bfs(graph, root):
+    result = ""
+    q = []
+    seen = []
+    # when we first start bfs - add the root node to both the queue and our seen
+    q.append(root)
+    seen.append(root)
+    # while there's still elements left in the queue
+    while len(q) != 0:
+        # pop off the first node - this is the node that we're going to visit the neighbors of
+        node = q.pop(0)
+        result += f"{node} "
+        # for each neighbor for that specific node
+        for neighbor in graph[node]:
+            # check if it's already in seen - if it isn't, add it to both the queue and seen
+            if neighbor not in seen:
+                seen.append(neighbor)
+                q.append(neighbor)
+    return result
+
+
+
+def dfs():
+    pass
+
+if __name__ == "__main__":
+    graph = {
+        'A' : ['B','C'],
+        'B' : ['D', 'E'],
+        'C' : ['F'],
+        'D' : [],
+        'E' : ['F'],
+        'F' : []
+        }
+    print(bfs(graph, "A"))
