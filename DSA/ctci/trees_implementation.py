@@ -190,16 +190,13 @@ def bfs(graph, root):
 
 
 
-def dfs():
-    pass
-
-if __name__ == "__main__":
-    graph = {
-        'A' : ['B','C'],
-        'B' : ['D', 'E'],
-        'C' : ['F'],
-        'D' : [],
-        'E' : ['F'],
-        'F' : []
-        }
-    print(bfs(graph, "A"))
+def dfs(graph, root):
+    result = ""
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if node not in result:
+            result += f"{node} "
+        for node in graph[node]:
+            stack.append(node)
+    return result

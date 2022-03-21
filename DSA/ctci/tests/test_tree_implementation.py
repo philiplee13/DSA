@@ -213,3 +213,16 @@ def test_bfs():
     expected_result = "A B C D E F "
     result = trees_implementation.bfs(graph, "A")
     assert expected_result == result
+
+def test_dfs():
+    graph = {
+    "A" : ["B","C"],
+    "B" : ["D", "E"],
+    "C" : ["F"],
+    "D" : [],
+    "E" : ["F"],
+    "F" : []
+    }
+    expected_result = "A C F B E D "
+    result = trees_implementation.dfs(graph, "A")
+    assert expected_result == result
